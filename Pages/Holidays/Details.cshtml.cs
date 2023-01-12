@@ -28,7 +28,9 @@ namespace Proiect.Pages.Holidays
                 return NotFound();
             }
 
-            var holiday = await _context.Holiday.FirstOrDefaultAsync(m => m.ID == id);
+            var holiday = await _context.Holiday
+                .Include(h => h.Agency)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (holiday == null)
             {
                 return NotFound();

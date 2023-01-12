@@ -31,25 +31,21 @@ namespace Proiect.Pages.Holidays
             }
 
             var holiday =  await _context.Holiday.FirstOrDefaultAsync(m => m.ID == id);
+
             if (holiday == null)
             {
                 return NotFound();
             }
+
             Holiday = holiday;
-           ViewData["AgencyID"] = new SelectList(_context.Agency, "ID", "ID");
+           ViewData["AgencyID"] = new SelectList(_context.Agency, "ID", "Name");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+        
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Attach(Holiday).State = EntityState.Modified;
+           _context.Attach(Holiday).State = EntityState.Modified;
 
             try
             {

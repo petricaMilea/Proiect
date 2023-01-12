@@ -32,11 +32,6 @@ namespace Proiect.Pages.Holidays
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             _context.Holiday.Add(Holiday);
             await _context.SaveChangesAsync();
 
