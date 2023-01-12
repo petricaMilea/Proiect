@@ -22,7 +22,7 @@ namespace Proiect.Models
         [Column(TypeName = "decimal(7, 2)")]
         public decimal Price { get; set; }
 
-        public int AgencyID { get; set; }
+        public int? AgencyID { get; set; }
 
         public Agency Agency { get; set; }
     }

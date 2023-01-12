@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect.Data;
 
@@ -11,9 +12,10 @@ using Proiect.Data;
 namespace Proiect.Migrations
 {
     [DbContext(typeof(ProiectContext))]
-    partial class ProiectContextModelSnapshot : ModelSnapshot
+    [Migration("20230112195834_Holiday")]
+    partial class Holiday
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +57,7 @@ namespace Proiect.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("AgencyID")
+                    b.Property<int>("AgencyID")
                         .HasColumnType("int");
 
                     b.Property<string>("Country")
@@ -87,7 +89,9 @@ namespace Proiect.Migrations
                 {
                     b.HasOne("Proiect.Models.Agency", "Agency")
                         .WithMany("Holidays")
-                        .HasForeignKey("AgencyID");
+                        .HasForeignKey("AgencyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Agency");
                 });

@@ -15,5 +15,7 @@ namespace Proiect.Data
         }
 
         public DbSet<Proiect.Models.Agency> Agency { get; set; } = default!;
+
+        public DbSet<Proiect.Models.Holiday> Holiday { get; set; }
     }
 }
