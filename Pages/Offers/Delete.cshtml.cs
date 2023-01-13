@@ -29,7 +29,10 @@ namespace Proiect.Pages.Offers
                 return NotFound();
             }
 
-            var offer = await _context.Offer.FirstOrDefaultAsync(m => m.ID == id);
+            var offer = await _context.Offer
+                .Include(o => o.Customer)
+                .Include(o => o.Holiday)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (offer == null)
             {
