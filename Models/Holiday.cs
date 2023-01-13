@@ -12,6 +12,7 @@ namespace Proiect.Models
         [Display(Name = "Package Holidays")]
         public string HolidayName { get; set; }
 
+        [Required, StringLength(25, MinimumLength = 3)]
         public string Country { get; set; }
 
         public string Details { get; set; }
