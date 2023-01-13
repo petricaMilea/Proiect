@@ -1,0 +1,50 @@
+﻿@page
+@model Proiect.Pages.Offers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Offer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Offer.ID" />
+            <div class="form-group">
+                <label asp-for="Offer.CustomerID" class="control-label"></label>
+                <select asp-for="Offer.CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
+                <span asp-validation-for="Offer.CustomerID" class="text-danger"></span>
+            </div>migration offer
+            <div class="form-group">
+                <label asp-for="Offer.HolidayID" class="control-label"></label>
+                <select asp-for="Offer.HolidayID" class="form-control" asp-items="ViewBag.HolidayID"></select>
+                <span asp-validation-for="Offer.HolidayID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Offer.OfferDate" class="control-label"></label>
+                <input asp-for="Offer.OfferDate" class="form-control" />
+                <span asp-validation-for="Offer.OfferDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Offer.ValidDate" class="control-label"></label>
+                <input asp-for="Offer.ValidDate" class="form-control" />
+                <span asp-validation-for="Offer.ValidDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
