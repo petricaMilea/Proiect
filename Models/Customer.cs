@@ -10,7 +10,7 @@ namespace Proiect.Models
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        public int LastName { get; set; }
+        public string LastName { get; set; }
 
         public DateTime Birthday { get; set; }
 
