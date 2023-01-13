@@ -26,5 +26,7 @@ namespace Proiect.Models
         {
             get { return FirstName + " " + LastName; }
         }
+
+        public ICollection<Offer>? Offers { get; set; }
     }
 }
