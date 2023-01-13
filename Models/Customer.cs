@@ -12,13 +12,14 @@ namespace Proiect.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
         [Display(Name = "Address")]
         public string CustomerAddress { get; set; }
 
         [Display(Name = "Phone Number")]
-        [RegularExpression(@"^\\+?[1-9][0-9]{7,14}$", ErrorMessage ="Introduce numarul de telefon de tipul '*40712345678'"), Required]
+        [RegularExpression(@"^\+[0-9]{2}[0-9]{3}[0-9]{6}$", ErrorMessage ="Introduce numarul de telefon de tipul '+40712345678'"), Required]
         public string PhoneNumber { get; set; }
 
         public string FullName
