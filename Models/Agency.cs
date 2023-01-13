@@ -13,7 +13,7 @@ namespace Proiect.Models
 
         public string Address { get; set; }
 
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"), Required]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "emailul trebuie sa fie de forma 'office@company.com'"), Required]
         public string Contact { get; set; }
 
         public ICollection<Holiday>? Holidays { get; set; }
