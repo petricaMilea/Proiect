@@ -1,9 +1,10 @@
-﻿@page
+﻿@page "{id:int?}"
 @model Proiect.Pages.Agencies.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
+
 
 <h1>Index</h1>
 
@@ -26,23 +27,57 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Agency) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contact)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.AgencyData.Agencies)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.AgencyID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                    <a asp-page="./Index" asp-route-id="@item.ID" >Select</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@if (Model.AgencyData.Agencies != null)
+{
+    <table class="table">
+        @foreach (var item in Model.AgencyData.Agencies)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.AgencyID)
+            {
+                selectedRow = "table-success";
+            }
+
+            <tr class="@selectedRow">
+                <td><strong>Holidays offered by @item.Name</strong></td>
+                <td>
+                    @{
+                        foreach (var b in item.Holidays)
+                        {
+                            @b.HolidayName @: @b.Details
+                            <br />
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
