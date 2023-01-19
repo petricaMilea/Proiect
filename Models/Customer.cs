@@ -22,6 +22,8 @@ namespace Proiect.Models
         [RegularExpression(@"^\+[0-9]{2}[0-9]{3}[0-9]{6}$", ErrorMessage ="Introduce numarul de telefon de tipul '+40712345678'"), Required]
         public string PhoneNumber { get; set; }
 
+        public string? Email { get; set; }
+
         public string FullName
         {
             get { return FirstName + " " + LastName; }
